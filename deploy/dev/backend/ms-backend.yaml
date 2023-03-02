@@ -30,15 +30,6 @@ spec:
   selector:
     matchLabels:
       app: ms-backend
-  ports:
-  - name: ms-backend0
-    protocol: TCP
-    port: 8880
-    targetPort: 8000
-  - name: ms-backend1
-    protocol: TCP
-    port: 8881
-    targetPort: 8000
   replicas: 2
   strategy:
     rollingUpdate:
