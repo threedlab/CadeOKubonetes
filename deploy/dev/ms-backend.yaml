@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: ms-backend
-  namespace: default
+  namespace: backend
   labels:
     app: ms-backend
 spec:
@@ -45,4 +45,6 @@ spec:
         ports:
         - containerPort: 8000
           name: ms-backend1
+      imagePullSecrets:
+      - name: docker-secret
       restartPolicy: Always
