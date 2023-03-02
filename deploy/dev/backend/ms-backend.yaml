@@ -1,3 +1,24 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ms-backend
+  namespace: dev-backend
+spec:
+  type: NodePort
+  ports:
+  - name: ms-backend0
+    port: 8880
+    targetPort: 8000
+    protocol: TCP
+  - name: ms-backend1
+    port: 8881
+    targetPort: 8000
+    protocol: TCP
+  selector:
+    app: ms-backend
+
+---
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -9,15 +30,6 @@ spec:
   selector:
     matchLabels:
       app: ms-backend
-  ports:
-  - name: ms-backend0
-    protocol: TCP
-    port: 8880
-    targetPort: ms-backend0
-  - name: ms-backend1
-    protocol: TCP
-    port: 8881
-    targetPort: ms-backend1
   replicas: 2
   strategy:
     rollingUpdate:
@@ -32,13 +44,9 @@ spec:
       containers:
       - name: ms-backend0
         image: python:latest
-        ports:
-        - containerPort: 8000
         resources:
       - name: ms-backend1
         image: python:latest
-        ports:
-        - containerPort: 8000
         resources:
       imagePullSecrets:
       - name: docker-secret
