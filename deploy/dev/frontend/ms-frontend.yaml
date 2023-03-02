@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
       - name: ms-frontend0
-        image: redbeard/mines-frontend
+        image: python:latest
         resources:
         env:
         - name: frontend.env
