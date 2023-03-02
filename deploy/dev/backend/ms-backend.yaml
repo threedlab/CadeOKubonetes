@@ -9,6 +9,15 @@ spec:
   selector:
     matchLabels:
       app: ms-backend
+  ports:
+  - name: ms-backend0
+    protocol: TCP
+    port: 8880
+    targetPort: ms-backend0
+  - name: ms-backend1
+    protocol: TCP
+    port: 8881
+    targetPort: ms-backend1
   replicas: 2
   strategy:
     rollingUpdate:
@@ -34,21 +43,3 @@ spec:
       imagePullSecrets:
       - name: docker-secret
       restartPolicy: Always
-      ports:
-      - name: ms-backend0
-        protocol: TCP
-        port: 8880
-        targetPort: 8000
-      - name: ms-backend1
-        protocol: TCP
-        port: 8881
-        targetPort: 8000
-  ports:
-  - name: ms-backend0
-    protocol: TCP
-    port: 8880
-    targetPort: ms-backend0
-  - name: ms-backend1
-    protocol: TCP
-    port: 8881
-    targetPort: ms-backend1
