@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name:  ms-backend
+  namespace: default
+  labels:
+    app:  ms-backend
+spec:
+  selector:
+    matchLabels:
+      app: ms-backend
+  replicas: 1
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app:  ms-backend
+    spec:
+      containers:
+      - name:  ms-backend0
+        image:  redbeard/mines-backend
+        resources:
+        env:
+        - name: backend.env
+          valueFrom:
+            configMapKeyRef:
+              name: ms-backend
+              key: backend.env
+        ports:
+        - containerPort:  8000
+          targetport: 8880
+          name:  ms-backend
+        restartPolicy: Always
+      - name:  ms-backend1
+        image:  redbeard/mines-backend
+        resources:
+        env:
+        - name: backend.env
+          valueFrom:
+            configMapKeyRef:
+              name: ms-backend
+              key: backend.env
+        ports:
+        - containerPort:  8000
+          targetport: 8881
+          name:  ms-backend
+        restartPolicy: Always
