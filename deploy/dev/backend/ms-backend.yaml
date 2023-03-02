@@ -7,11 +7,11 @@ spec:
   type: NodePort
   ports:
   - name: ms-backend0
-    port: 8880
+    port: 8882
     targetPort: 8000
     protocol: TCP
   - name: ms-backend1
-    port: 8881
+    port: 8883
     targetPort: 8000
     protocol: TCP
   selector:
