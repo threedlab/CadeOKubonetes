@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: ms-backend
-  namespace: backend
+  namespace: dev-backend
   labels:
     app: ms-backend
 spec:
