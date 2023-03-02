@@ -24,24 +24,12 @@ spec:
       - name: ms-backend0
         image: python:latest
         resources:
-        env:
-        - name: backend.env
-          valueFrom:
-            configMapKeyRef:
-              name: ms-backend
-              key: backend.env
         ports:
         - containerPort: 8880
           name: ms-backend
       - name: ms-backend1
         image: python:latest
         resources:
-        env:
-        - name: backend.env
-          valueFrom:
-            configMapKeyRef:
-              name: ms-backend
-              key: backend.env
         ports:
         - containerPort: 8881
           name: ms-backend1

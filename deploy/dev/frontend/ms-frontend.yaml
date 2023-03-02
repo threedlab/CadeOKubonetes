@@ -24,12 +24,6 @@ spec:
       - name: ms-frontend0
         image: python:latest
         resources:
-        env:
-        - name: frontend.env
-          valueFrom:
-            configMapKeyRef:
-              name: ms-frontend
-              key: frontend.env
         ports:
         - containerPort: 8890
           name: ms-frontend
