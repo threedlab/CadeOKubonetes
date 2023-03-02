@@ -9,7 +9,7 @@ spec:
   selector:
     matchLabels:
       app: ms-backend
-  replicas: 1
+  replicas: 2
   strategy:
     rollingUpdate:
       maxSurge: 25%
@@ -31,7 +31,7 @@ spec:
               name: ms-backend
               key: backend.env
         ports:
-        - containerPort: 8000
+        - containerPort: 8880
           name: ms-backend
       - name: ms-backend1
         image: redbeard/mines-backend
@@ -43,7 +43,7 @@ spec:
               name: ms-backend
               key: backend.env
         ports:
-        - containerPort: 8000
+        - containerPort: 8881
           name: ms-backend1
       imagePullSecrets:
       - name: docker-secret
