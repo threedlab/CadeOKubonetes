@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ms-frontend
+  namespace: frontend
+  labels:
+    app: ms-frontend
+spec:
+  selector:
+    matchLabels:
+      app: ms-frontend
+  replicas: 1
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: ms-frontend
+    spec:
+      containers:
+      - name: ms-frontend0
+        image: redbeard/mines-frontend
+        resources:
+        env:
+        - name: frontend.env
+          valueFrom:
+            configMapKeyRef:
+              name: ms-frontend
+              key: frontend.env
+        ports:
+        - containerPort: 8890
+          name: ms-frontend
+      imagePullSecrets:
+      - name: docker-secret
+      restartPolicy: Always
