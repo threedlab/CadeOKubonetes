@@ -30,9 +30,6 @@ spec:
       name: ms-backend-pod
       labels:
         app: ms-backend-app
-  selector:
-    matchLabels:
-      type: backend
     spec:
       containers:
       - name: ms-backend-app
@@ -47,6 +44,9 @@ spec:
             cpu: "1"
             memory: "1Gi"
       restartPolicy: Always
+  selector:
+    matchLabels:
+      type: backend
   replicas: 2
   strategy:
     rollingUpdate:

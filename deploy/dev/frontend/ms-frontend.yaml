@@ -30,9 +30,6 @@ spec:
       name: ms-frontend-pod
       labels:
         app: ms-frontend-app
-  selector:
-    matchLabels:
-      type: frontend
     spec:
       containers:
       - name: ms-frontend-app
@@ -47,6 +44,9 @@ spec:
             cpu: "1"
             memory: "1Gi"
       restartPolicy: Always
+  selector:
+    matchLabels:
+      type: frontend
   replicas: 2
   strategy:
     rollingUpdate:
