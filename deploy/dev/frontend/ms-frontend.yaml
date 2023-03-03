@@ -44,6 +44,8 @@ spec:
       imagePullSecrets:
       - name: docker-secret
       restartPolicy: Always
+      ports:
+        - containerPort: 8000
   replicas: 2
   strategy:
     rollingUpdate:
