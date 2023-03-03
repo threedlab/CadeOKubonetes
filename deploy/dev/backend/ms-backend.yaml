@@ -39,7 +39,7 @@ spec:
     spec:
       containers:
       - name: ms-backend
-        image: python:latest
+        image: python:stable
         resources:
       imagePullSecrets:
       - name: docker-secret
