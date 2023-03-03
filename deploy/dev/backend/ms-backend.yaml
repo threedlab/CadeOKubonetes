@@ -6,12 +6,8 @@ metadata:
 spec:
   type: NodePort
   ports:
-  - name: ms-backend0
+  - name: ms-backend
     port: 8882
-    targetPort: 8000
-    protocol: TCP
-  - name: ms-backend1
-    port: 8883
     targetPort: 8000
     protocol: TCP
   selector:
@@ -42,10 +38,7 @@ spec:
         app: ms-backend
     spec:
       containers:
-      - name: ms-backend0
-        image: python:latest
-        resources:
-      - name: ms-backend1
+      - name: ms-backend
         image: python:latest
         resources:
       imagePullSecrets:
