@@ -4,34 +4,52 @@ metadata:
   name: ms-frontend-svc
   namespace: dev-frontend
 spec:
-  type: LoadBalancer
+  type: NodePort
   ports:
   - name: ms-frontend-svc-8882
-    port: 8882
+    port: 8000
     targetPort: 8000
+    nodePort: 8882
     protocol: TCP
   selector:
-    app: python
+    app: ms-frontend-app
 
 ---
 
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: python
+  name: ms-frontend-dp
+  namespace: dev-frontend
+  labels:
+    app: ms-frontend-app
 spec:
   selector:
     matchLabels:
-      app: python
-  replicas: 4
+      app: ms-frontend-dp
   template:
     metadata:
       labels:
-        app: python
+        app: ms-frontend-dp
     spec:
       containers:
-      - name: python
-        image: python:3.9.16
+      - name: ms-frontend-app
+        image: python:latest
         ports:
         - containerPort: 8000
-
+        resources:
+          requests:
+            cpu: "250m"
+            memory: "256Mi"
+          limits:
+            cpu: "1"
+            memory: "1Gi"
+      imagePullSecrets:
+      - name: docker-secret
+      restartPolicy: Always
+  replicas: 2
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate

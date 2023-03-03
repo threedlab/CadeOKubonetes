@@ -4,14 +4,15 @@ metadata:
   name: ms-backend-svc
   namespace: dev-backend
 spec:
-  type: LoadBalancer
+  type: NodePort
   ports:
   - name: ms-backend-svc-8882
-    port: 8882
+    port: 8000
     targetPort: 8000
+    nodePort: 8882
     protocol: TCP
   selector:
-    app: ms-backend-dp
+    app: ms-backend-app
 
 ---
 
