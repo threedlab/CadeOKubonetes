@@ -1,27 +1,27 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: ms-backend
+  name: ms-backend-svc
   namespace: dev-backend
 spec:
   type: NodePort
   ports:
-  - name: ms-backend
+  - name: ms-backend-app
     port: 8882
     targetPort: 8000
     protocol: TCP
   selector:
-    app: ms-backend
+    app: ms-backend-app
 
 ---
 
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ms-backend
+  name: ms-backend-dp
   namespace: dev-backend
   labels:
-    app: ms-backend
+    app: ms-backend-dp
 spec:
   selector:
     matchLabels:
@@ -35,10 +35,10 @@ spec:
   template:
     metadata:
       labels:
-        app: ms-backend
+        app: ms-backend-app
     spec:
       containers:
-      - name: ms-backend
+      - name: ms-backend-app
         image: python:latest
         resources:
       imagePullSecrets:
