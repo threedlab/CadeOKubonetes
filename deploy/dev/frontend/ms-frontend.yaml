@@ -11,27 +11,27 @@ spec:
     targetPort: 8000
     protocol: TCP
   selector:
-    app: hello-python
+    app: python
 
 ---
 
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: hello-python
+  name: python
 spec:
   selector:
     matchLabels:
-      app: hello-python
+      app: python
   replicas: 4
   template:
     metadata:
       labels:
-        app: hello-python
+        app: python
     spec:
       containers:
-      - name: hello-python
-        image: hello-python:latest
+      - name: python
+        image: python:latest
         imagePullPolicy: Never
         ports:
         - containerPort: 8000
