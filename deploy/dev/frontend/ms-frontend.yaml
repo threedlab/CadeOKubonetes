@@ -6,12 +6,12 @@ metadata:
 spec:
   type: LoadBalancer
   ports:
-  - name: ms-frontend-svc-8883
-    port: 8883
+  - name: ms-frontend-svc-8882
+    port: 8882
     targetPort: 8000
     protocol: TCP
   selector:
-    app: ms-frontend-app
+    app: ms-frontend-dp
 
 ---
 
@@ -21,15 +21,15 @@ metadata:
   name: ms-frontend-dp
   namespace: dev-frontend
   labels:
-    app: ms-frontend-dp
+    app: ms-frontend-app
 spec:
   selector:
     matchLabels:
-      app: ms-frontend-app
+      app: ms-frontend-dp
   template:
     metadata:
       labels:
-        app: ms-frontend-app
+        app: ms-frontend-dp
     spec:
       containers:
       - name: ms-frontend-app

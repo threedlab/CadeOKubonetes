@@ -21,15 +21,15 @@ metadata:
   name: ms-backend-dp
   namespace: dev-backend
   labels:
-    app: ms-backend-dp
+    app: ms-backend-app
 spec:
   selector:
     matchLabels:
-      app: ms-backend-app
+      app: ms-backend-dp
   template:
     metadata:
       labels:
-        app: ms-backend-app
+        app: ms-backend-dp
     spec:
       containers:
       - name: ms-backend-app
