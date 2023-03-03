@@ -32,7 +32,6 @@ spec:
       containers:
       - name: python
         image: python:3.9.16
-        imagePullPolicy: Never
         ports:
         - containerPort: 8000
 
