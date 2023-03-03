@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
       - name: ms-frontend0
-        image: python:stable
+        image: python:latest
         resources:
         ports:
         - containerPort: 8890
