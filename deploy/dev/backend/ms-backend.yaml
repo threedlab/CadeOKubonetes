@@ -6,7 +6,7 @@ metadata:
 spec:
   type: NodePort
   ports:
-  - name: ms-backend-app
+  - name: ms-backend-svc-8882
     port: 8882
     targetPort: 8000
     protocol: TCP
@@ -25,13 +25,7 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app: ms-backend
-  replicas: 2
-  strategy:
-    rollingUpdate:
-      maxSurge: 25%
-      maxUnavailable: 25%
-    type: RollingUpdate
+      app: ms-backend-app
   template:
     metadata:
       labels:
@@ -44,3 +38,9 @@ spec:
       imagePullSecrets:
       - name: docker-secret
       restartPolicy: Always
+  replicas: 2
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
