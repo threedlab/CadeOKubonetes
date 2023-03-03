@@ -11,44 +11,28 @@ spec:
     targetPort: 8000
     protocol: TCP
   selector:
-    app: ms-frontend-dp
+    app: hello-python
 
 ---
 
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ms-frontend-dp
-  namespace: dev-frontend
-  labels:
-    app: ms-frontend-app
+  name: hello-python
 spec:
   selector:
     matchLabels:
-      app: ms-frontend-dp
+      app: hello-python
+  replicas: 4
   template:
     metadata:
       labels:
-        app: ms-frontend-dp
+        app: hello-python
     spec:
       containers:
-      - name: ms-frontend-app
-        image: python:latest
+      - name: hello-python
+        image: hello-python:latest
+        imagePullPolicy: Never
         ports:
         - containerPort: 8000
-        resources:
-          requests:
-            cpu: "250m"
-            memory: "256Mi"
-          limits:
-            cpu: "1"
-            memory: "1Gi"
-      imagePullSecrets:
-      - name: docker-secret
-      restartPolicy: Always
-  replicas: 2
-  strategy:
-    rollingUpdate:
-      maxSurge: 25%
-      maxUnavailable: 25%
-    type: RollingUpdate
+
