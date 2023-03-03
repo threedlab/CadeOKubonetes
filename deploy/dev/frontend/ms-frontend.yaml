@@ -34,6 +34,8 @@ spec:
       containers:
       - name: ms-frontend-app
         image: python:latest
+        ports:
+        - containerPort: 8000
         resources:
           requests:
             cpu: "250m"
@@ -44,8 +46,6 @@ spec:
       imagePullSecrets:
       - name: docker-secret
       restartPolicy: Always
-      ports:
-        - containerPort: 8000
   replicas: 2
   strategy:
     rollingUpdate:
