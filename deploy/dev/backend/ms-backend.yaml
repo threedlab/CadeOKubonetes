@@ -12,7 +12,7 @@ spec:
     nodePort: 30000
     protocol: TCP
   selector:
-    app: ms-backend-app
+      type: backend
 
 ---
 
@@ -23,14 +23,16 @@ metadata:
   namespace: dev-backend
   labels:
     app: ms-backend-app
+    type: backend
 spec:
-  selector:
-    matchLabels:
-      app: ms-backend-dp
   template:
     metadata:
+      name: ms-backend-pod
       labels:
-        app: ms-backend-dp
+        app: ms-backend-app
+  selector:
+    matchLabels:
+      type: backend
     spec:
       containers:
       - name: ms-backend-app
@@ -44,8 +46,6 @@ spec:
           limits:
             cpu: "1"
             memory: "1Gi"
-      imagePullSecrets:
-      - name: docker-secret
       restartPolicy: Always
   replicas: 2
   strategy:
