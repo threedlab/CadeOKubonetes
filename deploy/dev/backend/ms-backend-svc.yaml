@@ -12,4 +12,4 @@ spec:
     nodePort: 30001
     protocol: TCP
   selector:
-      app: python
+      app: ms-backend-app
