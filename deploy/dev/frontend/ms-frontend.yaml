@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ms-frontend-dp
+  name: ms-frontend-pod
   namespace: dev-frontend
   labels:
     app: ms-frontend-app
