@@ -26,7 +26,7 @@ spec:
             cpu: "1"
             memory: "1Gi"
       restartPolicy: Always
-  replicas: 2
+  replicas: 10
   selector:
     matchLabels:
       app: ms-backend-app
