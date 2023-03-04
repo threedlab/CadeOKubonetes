@@ -15,10 +15,8 @@ spec:
         app: ms-backend-app
     spec:
       containers:
-      - image: python
+      - image: python:3.6
         name: ms-backend-app
-        ports:
-        - containerPort: 8000
         resources:
           limits:
             cpu: "1"
