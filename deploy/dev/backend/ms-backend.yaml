@@ -30,8 +30,3 @@ spec:
   selector:
     matchLabels:
       app: ms-backend-app
-  strategy:
-    rollingUpdate:
-      maxSurge: 25%
-      maxUnavailable: 25%
-    type: RollingUpdate
