@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ms-backend-dp
+  name: ms-backend-pod
   namespace: dev-backend
   labels:
     app: ms-backend-app
