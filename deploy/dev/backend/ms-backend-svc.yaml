@@ -6,7 +6,7 @@ metadata:
 spec:
   type: NodePort
   ports:
-  - name: ms-backend-svc-8882
+  - name: ms-backend-svc
     port: 8000
     targetPort: 8000
     nodePort: 30001
