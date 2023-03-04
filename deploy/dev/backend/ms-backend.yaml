@@ -16,6 +16,13 @@ spec:
       containers:
       - name: ms-backend-app
         image: python
+        livenessProbe:
+          exec:
+            command:
+            - cat
+            - /tmp/healthy
+          initialDelaySeconds: 5
+          periodSeconds: 5
         ports:
         - containerPort: 8000
         resources:
