@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: ms-backend-app
-        image: python:3.6
+        image: python
         ports:
         - containerPort: 8000
         resources:
@@ -30,3 +30,8 @@ spec:
   selector:
     matchLabels:
       app: ms-backend-app
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
