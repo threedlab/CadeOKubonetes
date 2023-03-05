@@ -25,6 +25,7 @@ spec:
           limits:
             cpu: "1"
             memory: "1Gi"
+      restartPolicy: Never
   replicas: 2
   selector:
     matchLabels:
