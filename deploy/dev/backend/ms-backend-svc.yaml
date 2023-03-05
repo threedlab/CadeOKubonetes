@@ -9,7 +9,7 @@ spec:
   - name: ms-backend-svc
     port: 8000
     targetPort: 8000
-    nodePort: 30001
+    nodePort: 33331
     protocol: TCP
   selector:
       app: ms-backend-app
