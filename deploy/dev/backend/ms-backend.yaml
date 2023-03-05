@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ms-backend-pod
-  namespace: dev-backend
+  name: ms-frontend-pod
+  namespace: dev-frontend
   labels:
-    app: ms-backend-app
-    type: backend
+    app: ms-frontend-app
+    type: frontend
 spec:
   template:
     metadata:
-      name: ms-backend-pod
+      name: ms-frontend-pod
       labels:
-        app: ms-backend-app
+        app: ms-frontend-app
     spec:
       containers:
-      - name: ms-backend-app
+      - name: ms-frontend-app
         image: python:3.6
         ports:
         - containerPort: 8000
@@ -25,11 +25,12 @@ spec:
           limits:
             cpu: "1"
             memory: "1Gi"
-      restartPolicy: Never
+        command: ["python"]
+        args: ["-c", "print('Hello, Kubernetes!')"]
   replicas: 2
   selector:
     matchLabels:
-      app: ms-backend-app
+      app: ms-frontend-app
   strategy:
     rollingUpdate:
       maxSurge: 25%
