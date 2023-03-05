@@ -4,7 +4,7 @@ metadata:
   name: ms-frontend-pod
   namespace: dev-frontend
   labels:
-    app: ms-frontend-app
+    app: ms-frontend-dp
     type: frontend
 spec:
   template:
