@@ -25,7 +25,8 @@ spec:
           limits:
             cpu: "1"
             memory: "1Gi"
-      restartPolicy: Never
+        command: ["python"]
+        args: ["-c", "print('Hello, Kubernetes!')"]
   replicas: 2
   selector:
     matchLabels:
